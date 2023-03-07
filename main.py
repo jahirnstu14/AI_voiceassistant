@@ -49,38 +49,46 @@ def sendEmail(to, content):
     server.close()
 
 if __name__ == "__main__":
+    #wish the user 
     wishMe()
    
     while True:
         query=takeCommand().lower()#convert user voice into lower case text 
         #executing for logic tasks based on queary 
+        #open the wikipedia and read the two sentence 
         if 'wikipedia'in query:
             speak('Searching Wikipeadia')
             query = query.replace("wikipedia", "")
             results=wikipedia.summary(query, sentences=2)
             speak("According to wikipedia")
             speak(results)
+            #open youtube
         elif 'open youtube' in query:
             webbrowser.open("youtube.com")
 
+          #open google
         elif 'open google' in query:
             webbrowser.open("google.com")
-        
+
+        #open stackoverflow website by taking speech
         elif 'open stackoverflow' in query:
             webbrowser.open("stackoverflow.com")
+
+            #play music directory form audio music 
         elif 'play music' in query:
             music_dir= 'D:\\audio song'
-            songs=os.listdir(music_dir)
+            songs=os.listdir(music_dir)#takes list of songs 
             print(songs)
             os.startfile(os.path.join(music_dir, songs[random.randint(0,2)]))
+            #it is use for time showing 
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Sir, the time is {strTime}")
-
+   #open vs code 
         elif 'open code' in query:
             codePath = "C:\\Users\\Haris\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
-
+   #send email to the mypassword@gmail.com from jahirkhan.ice.nstu@gmail.com
         elif 'email to harry' in query:
             try:
                 speak("What should I say?")
